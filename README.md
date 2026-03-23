@@ -43,15 +43,16 @@ A clean dataset was created (superstore_clean) for analysis.
 evaluated delivery time across shipping modes
 measured average, minimum, and maximum delivery days
 analyzed delivery variability using standard deviation
-2. Delay Analysis
+
+3. Delay Analysis
 identified delayed orders (> 6 days)
 calculated the delay percentage by state and city
 segmented cities into High / Medium / Low delay categories
-3. Sales & Segment Analysis
+4. Sales & Segment Analysis
 analyzed total sales by customer segment
 compared delivery performance across segments
 calculated average order value
-4. Product & Category Analysis
+5. Product & Category Analysis
 evaluated sales by category and sub-category
 identified instability in the furniture category
 detected “Tables” as the key contributor to delivery variation
@@ -91,12 +92,12 @@ Project Value
 Key Insight with SQL 
 
 1. Which customer segment generates the highest sales?
-SELECT
-    segment,
+   
+SELECT segment,
     ROUND(SUM(sales), 2) AS total_sales
-FROM superstore_clean
-GROUP BY segment
-ORDER BY total_sales DESC;
+        FROM superstore_clean
+           GROUP BY segment
+               ORDER BY total_sales DESC;
 
 Answer
 Consumer segment generated the highest revenue (~1.14M)
