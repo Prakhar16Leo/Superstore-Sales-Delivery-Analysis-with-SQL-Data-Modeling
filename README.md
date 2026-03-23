@@ -1,0 +1,2 @@
+# Superstore-Sales-Delivery-Analysis-with-SQL-Data-Modeling
+This project focuses on analyzing retail sales and delivery performance using SQL. The objective was to identify operational inefficiencies, evaluate delivery performance, and understand sales patterns across different business dimensions and also transforming a raw dataset into a relational database structure to simulate real-world data systems.
