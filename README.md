@@ -1,8 +1,8 @@
---- Superstore-Sales-Delivery-Analysis-with-SQL-Data-Modeling
-This project focuses on analyzing retail sales and delivery performance using SQL. The objective was to identify operational inefficiencies, evaluate delivery performance, and understand sales patterns across different business dimensions, and also to transform a raw dataset into a relational database structure to simulate real-world data systems.
+Superstore-Sales-Delivery-Analysis-with-SQL-Data-Modeling
+This project focuses on analyzing retail sales and delivery performance using SQL. The objective was to identify operational inefficiencies, evaluate delivery performance, understand sales patterns across different business dimensions, and transform a raw dataset into a relational database structure to simulate real-world data systems.
 Business Problem
 
----Retail businesses need to understand:
+Retail businesses need to understand:
 
 Which factors affect delivery performance
 where operational delays occur
@@ -79,12 +79,108 @@ High-delay cities can be identified using percentage-based analysis
 Consumer segment generates the highest sales but shows higher variability
 The furniture category has an inconsistent delivery performance
 “Tables” sub-category is a major contributor to delivery instability
+
 Business Recommendations
 Optimize logistics for high-delay cities
 improve handling of furniture shipments
 Monitor delivery performance during high-volume shipping modes
 Prioritize stable delivery strategies for high-revenue segments
- Project Value
+
+Project Value
+
+Key Insight with SQL 
+
+1. Which customer segment generates the highest sales?
+SELECT
+    segment,
+    ROUND(SUM(sales), 2) AS total_sales
+FROM superstore_clean
+GROUP BY segment
+ORDER BY total_sales DESC;
+
+Answer
+Consumer segment generated the highest revenue (~1.14M)
+
+Insight
+A large portion of sales comes from individual customers, indicating strong B2C demand.
+
+2. Which shipping mode takes the longest time?
+SELECT
+    ship_mode,
+    ROUND(AVG(DATEDIFF(ship_date, order_date)), 2) AS avg_delivery_days
+FROM superstore_clean
+GROUP BY ship_mode
+ORDER BY avg_delivery_days DESC;
+
+Answer
+Standard Class has the highest average delivery time (~4 days)
+
+Insight
+Standard shipping handles higher volume, which impacts delivery speed.
+
+3. Which states have the highest delivery delays?
+SELECT
+    state,
+    COUNT(*) AS total_orders,
+    SUM(CASE WHEN DATEDIFF(ship_date, order_date) > 6 THEN 1 ELSE 0 END) AS delayed_orders,
+    ROUND(
+        SUM(CASE WHEN DATEDIFF(ship_date, order_date) > 6 THEN 1 ELSE 0 END) * 100.0 / COUNT(*),
+        2
+    ) AS delay_percentage
+FROM superstore_clean
+GROUP BY state
+ORDER BY delay_percentage DESC;
+
+Answer
+Certain states show significantly higher delay percentages (>10%)
+
+Insight
+Delivery inefficiencies are geographically concentrated and require targeted improvement.
+
+4. Which sub-category generates the highest sales?
+SELECT
+    sub_category,
+    ROUND(SUM(sales), 2) AS total_sales
+FROM superstore_clean
+GROUP BY sub_category
+ORDER BY total_sales DESC;
+
+Answer
+Top-performing sub-categories contribute a large share of total revenue
+
+Insight
+Revenue is driven by a few key product segments rather than being evenly distributed.
+
+5. Which product category shows delivery instability?
+SELECT
+    sub_category,
+    ROUND(STDDEV(DATEDIFF(ship_date, order_date)), 2) AS delivery_variation
+FROM superstore_clean
+WHERE category = 'Furniture'
+GROUP BY sub_category
+ORDER BY delivery_variation DESC;
+
+Answer
+The furniture category shows high delivery variation, especially in specific sub-categories
+
+Insight
+Inconsistent delivery performance suggests operational issues in handling certain products.
+
+6. Who are the top customers by sales?
+SELECT
+    customer_name,
+    ROUND(SUM(sales), 2) AS total_sales
+FROM superstore_clean
+GROUP BY customer_name
+ORDER BY total_sales DESC
+LIMIT 10;
+
+Answer
+A small number of customers contribute significantly to total revenue
+
+Insight
+High-value customers can be targeted for retention strategies.
+
 
 ---This project demonstrates:
 
