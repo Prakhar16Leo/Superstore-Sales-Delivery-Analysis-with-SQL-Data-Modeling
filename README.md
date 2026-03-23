@@ -1,8 +1,8 @@
-# Superstore-Sales-Delivery-Analysis-with-SQL-Data-Modeling
+--- Superstore-Sales-Delivery-Analysis-with-SQL-Data-Modeling
 This project focuses on analyzing retail sales and delivery performance using SQL. The objective was to identify operational inefficiencies, evaluate delivery performance, and understand sales patterns across different business dimensions, and also to transform a raw dataset into a relational database structure to simulate real-world data systems.
 Business Problem
 
-Retail businesses need to understand:
+---Retail businesses need to understand:
 
 Which factors affect delivery performance
 where operational delays occur
@@ -11,7 +11,7 @@ How data can be structured for scalable analysis
 
 This project aims to answer these questions using data analysis and database modeling.
 
- Dataset Overview
+---Dataset Overview
 
 The dataset contains retail transaction data, including:
 
@@ -28,7 +28,7 @@ Data Preparation
 
 The raw dataset contained inconsistencies and required cleaning.
 
-Key steps:
+---Key steps:
 
 converted date fields using STR_TO_DATE
 removed blank and invalid records
@@ -38,7 +38,7 @@ validated shipping logic (ship_date ≥ order_date)
 
 A clean dataset was created (superstore_clean) for analysis.
 
-SQL Analysis Performed
+---SQL Analysis Performed
 1. Delivery Performance Analysis
 evaluated delivery time across shipping modes
 measured average, minimum, and maximum delivery days
@@ -55,7 +55,7 @@ calculated average order value
 evaluated sales by category and sub-category
 identified instability in the furniture category
 detected “Tables” as the key contributor to delivery variation
-🧠 Data Modeling (JOIN Project)
+--- Data Modeling (JOIN Project)
 
 The dataset was transformed into a relational structure:
 
@@ -72,7 +72,7 @@ multi-table joins
 
 Analysis was revalidated using JOIN queries.
 
-Key Findings
+---Key Findings
 Standard shipping mode shows a higher delivery time due to the volume load
 Delivery delays are concentrated in specific cities, not uniformly distributed
 High-delay cities can be identified using percentage-based analysis
@@ -86,7 +86,7 @@ Monitor delivery performance during high-volume shipping modes
 Prioritize stable delivery strategies for high-revenue segments
  Project Value
 
-This project demonstrates:
+---This project demonstrates:
 
 SQL-based data cleaning and transformation
 analytical thinking and problem-solving
