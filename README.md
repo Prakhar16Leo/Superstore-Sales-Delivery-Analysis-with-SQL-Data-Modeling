@@ -1,40 +1,47 @@
 # Superstore-Sales-Delivery-Analysis-(SQL)
-This project focuses on analyzing retail sales and delivery performance using SQL. The objective was to identify operational inefficiencies, evaluate delivery performance, understand sales patterns across different business dimensions, and transform a raw dataset into a relational database structure to simulate real-world data systems.
-Business Problem
 
-Retail businesses need to understand:
+This project focuses on analyzing retail sales and delivery performance using SQL. The objective was to identify operational inefficiencies, evaluate delivery performance, understand sales patterns across different business dimensions, and transform a raw dataset into a relational database structure to show real-world data systems.
+---
 
-Which factors affect delivery performance
-where operational delays occur
-Which products and regions drive revenue
-How data can be structured for scalable analysis
+##Business Problem needs to be understood:
 
-This project aims to answer these questions using data analysis and database modeling.
+-Which factors affect delivery performance
+-where operational delays occur
+-Which products and regions drive revenue
+-How data can be structured for scalable analysis
 
----Dataset Overview
+###This project aims to answer these questions using data analysis and database modeling.
 
-The dataset contains retail transaction data, including:
+---
 
-order details (order date, ship date, ship mode)
-customer information (segment, region, location)
-product hierarchy (category, sub-category, product)
-sales values
-🛠 Tools Used
-SQL (MySQL)
-Data Cleaning
-Data Analysis
-Relational Data Modeling
-Data Preparation
+#Dataset Overview
 
-The raw dataset contained inconsistencies and required cleaning.
+##The dataset contains retail transaction data, including:
 
----Key steps:
+-order details (order date, ship date, ship mode)
+-customer information (segment, region, location)
+-product hierarchy (category, sub-category, product)
+-sales values
 
-converted date fields using STR_TO_DATE
-removed blank and invalid records
-standardized text fields using TRIM
-converted sales into a numeric format
-validated shipping logic (ship_date ≥ order_date)
+
+# Tools Used
+1. SQL (MySQL)
+2. Data Cleaning
+3. Data Analysis
+4. Relational Data Modeling
+5. Data Preparation
+
+---
+ 
+# Data Cleaning 
+---
+## Key steps:
+---
+-converted date fields using STR_TO_DATE
+-removed blank and invalid records
+-standardized text fields using TRIM
+-converted sales into a numeric format
+-validated shipping logic (ship_date ≥ order_date)
 
 A clean dataset was created (superstore_clean) for analysis.
 
