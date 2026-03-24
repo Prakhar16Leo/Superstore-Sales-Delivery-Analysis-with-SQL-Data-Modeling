@@ -1,6 +1,6 @@
 # Superstore-Sales-Delivery-Analysis-(SQL)
 
-This project focuses on analyzing retail sales and delivery performance using SQL. We aimed to identify operational inefficiencies, evaluate delivery performance, understand sales patterns across different business dimensions, and transform a raw dataset into a relational database structure to show real-world data systems.
+This project focuses on analyzing retail sales and delivery performance using SQL. We aimed to identify operational inefficiencies, evaluate delivery performance, understand sales patterns across different business dimensions, and turn a raw dataset into a relational database to demonstrate real-world data systems.
 
 ## Business Problem needs to be understood:
 
@@ -9,19 +9,20 @@ This project focuses on analyzing retail sales and delivery performance using SQ
 -Which products and regions drive revenue
 -How data can be structured for scalable analysis
 
-### This project aims to answer these questions using data analysis and database modeling.
+#### This project aims to answer these questions using data analysis and database modeling.
+
 ---
-#Dataset Overview
 
-##The dataset contains retail transaction data, including:
+## Dataset Overview
 
--order details (order date, ship date, ship mode)
--customer information (segment, region, location)
--product hierarchy (category, sub-category, product)
--sales values
+#### The dataset contains retail transaction data, including:
 
+* order details (order date, ship date, ship mode)
+* customer information (segment, region, location)
+* product hierarchy (category, sub-category, product)
+* sales values
 
-# Tools Used
+## Tools Used
 1. SQL (MySQL)
 2. Data Cleaning
 3. Data Analysis
@@ -30,78 +31,95 @@ This project focuses on analyzing retail sales and delivery performance using SQ
 
 ---
  
-# Data Cleaning 
+## Data Cleaning 
+#### Cleaning Data by Checking Null, Blank, and Duplicate:
+
+1. Converted date fields using STR_TO_DATE
+2. Removed blank and invalid records
+3. Checking for duplicates for the unique ID and Other Columns
+4. standardized text fields using TRIM
+
+#### Validating Dataset :
+
+1. converted sales into a numeric format
+2. Converting text in datatime and decimal values
+3. validated shipping logic (ship_date ≥ order_date)
+
+#### A clean dataset was created (superstore_clean) for analysis.
+
 ---
-## Key steps:
----
--converted date fields using STR_TO_DATE
--removed blank and invalid records
--standardized text fields using TRIM
--converted sales into a numeric format
--validated shipping logic (ship_date ≥ order_date)
 
-A clean dataset was created (superstore_clean) for analysis.
+## SQL Analysis Performed
 
----SQL Analysis Performed
-1. Delivery Performance Analysis
-evaluated delivery time across shipping modes
-measured average, minimum, and maximum delivery days
-analyzed delivery variability using standard deviation
+### 1. Delivery Performance Analysis
 
-3. Delay Analysis
-identified delayed orders (> 6 days)
-calculated the delay percentage by state and city
-segmented cities into High / Medium / Low delay categories
-4. Sales & Segment Analysis
-analyzed total sales by customer segment
-compared delivery performance across segments
-calculated average order value
-5. Product & Category Analysis
-evaluated sales by category and sub-category
-identified instability in the furniture category
-detected “Tables” as the key contributor to delivery variation
---- Data Modeling (JOIN Project)
+* Evaluated delivery time across shipping modes
+* Measured average, minimum, and maximum delivery days
+* Analyzed delivery variability using standard deviation
 
-The dataset was transformed into a relational structure:
+### 2. Delay Analysis
+* identified delayed orders (> 6 days)
+* calculated the delay percentage by state and city
+* segmented cities into High / Medium / Low delay categories
+  
+### 3. Sales & Segment Analysis
+* analyzed total sales by customer segment
+* compared delivery performance across segments
+* calculated average order value
+  
+### 4. Product & Category Analysis
+* evaluated sales by category and sub-category
+* identified instability in the furniture category
+* detected “Tables” as the key contributor to delivery variation
 
-customers (customer details)
-orders (order and shipping information)
-products (product hierarchy)
-sales (transaction-level data)
+  ---
+  
+## Data Modeling (JOIN Project)
 
-Relationships were created using:
+#### The dataset was transformed into a relational structure:
 
-primary keys
-foreign keys
-multi-table joins
+#### Tables
 
-Analysis was revalidated using JOIN queries.
+1. Customers (customer details)
+2. Orders (order and shipping information)
+3. Products (product hierarchy)
+4. Sales (transaction-level data)
 
----Key Findings
-Standard shipping mode shows a higher delivery time due to the volume load
-Delivery delays are concentrated in specific cities, not uniformly distributed
-High-delay cities can be identified using percentage-based analysis
-Consumer segment generates the highest sales but shows higher variability
-The furniture category has an inconsistent delivery performance
-“Tables” sub-category is a major contributor to delivery instability
+#### Relationships were created using:
 
-Business Recommendations
-Optimize logistics for high-delay cities
-improve handling of furniture shipments
-Monitor delivery performance during high-volume shipping modes
-Prioritize stable delivery strategies for high-revenue segments
+* primary keys
+* foreign keys
+* multi-table joins
 
-Project Value
+#### Analysis was revalidated using JOIN queries.
 
-Key Insight with SQL 
+## Key Findings
 
-1. Which customer segment generates the highest sales?
+1. Standard shipping mode shows a higher delivery time due to the volume load
+2. Delivery delays are concentrated in specific cities, not uniformly distributed
+3. High-delay cities can be identified using percentage-based analysis
+4. Consumer segment generates the highest sales but shows higher variability
+5. The furniture category has an inconsistent delivery performance
+6. “Tables” sub-category is a major contributor to delivery instability
+
+## Business Recommendations
+
+* Optimize logistics for high-delay cities
+* Improve handling of furniture shipments
+* Monitor delivery performance during high-volume shipping modes
+* Prioritize stable delivery strategies for high-revenue segments
+
+## Project Value
+
+### Key Insight with SQL 
+
+#### 1. Which customer segment generates the highest sales?
    
-SELECT segment,
-    ROUND(SUM(sales), 2) AS total_sales
-        FROM superstore_clean
-           GROUP BY segment
-               ORDER BY total_sales DESC;
+ ``` SELECT segment,```
+ ```ROUND(SUM(sales), 2) AS total_sales```
+ ``` FROM superstore_clean```
+ ``` GROUP BY segment. ```
+ ``` ORDER BY total_sales DESC; ```
 
 Answer
 Consumer segment generated the highest revenue (~1.14M)
