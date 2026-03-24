@@ -116,33 +116,36 @@ This project focuses on analyzing retail sales and delivery performance using SQ
 #### 1. Which customer segment generates the highest sales?
    
  ```
-SELECT segment 
+SELECT segment, 
  ROUND(SUM(sales), 2) AS total_sales
  FROM superstore_clean`
  GROUP BY segment. 
  ORDER BY total_sales DESC;
 ```
-Answer
+#### Answer
 Consumer segment generated the highest revenue (~1.14M)
 
-Insight
+#### Insight
 A large portion of sales comes from individual customers, indicating strong B2C demand.
 
-2. Which shipping mode takes the longest time?
+#### 2. Which shipping mode takes the longest time?
+```
 SELECT
-    ship_mode,
-    ROUND(AVG(DATEDIFF(ship_date, order_date)), 2) AS avg_delivery_days
+ship_mode,
+ROUND(AVG(DATEDIFF(ship_date, order_date)), 2) AS avg_delivery_days
 FROM superstore_clean
 GROUP BY ship_mode
 ORDER BY avg_delivery_days DESC;
+```
 
-Answer
+#### Answer
 Standard Class has the highest average delivery time (~4 days)
 
-Insight
+#### Insight
 Standard shipping handles higher volume, which impacts delivery speed.
 
-3. Which states have the highest delivery delays?
+#### 3. Which states have the highest delivery delays?
+```
 SELECT
     state,
     COUNT(*) AS total_orders,
@@ -154,59 +157,67 @@ SELECT
 FROM superstore_clean
 GROUP BY state
 ORDER BY delay_percentage DESC;
+```
 
-Answer
+#### Answer
 Certain states show significantly higher delay percentages (>10%)
 
-Insight
+#### Insight
 Delivery inefficiencies are geographically concentrated and require targeted improvement.
 
-4. Which sub-category generates the highest sales?
+#### 4. Which sub-category generates the highest sales?
+
+```
 SELECT
-    sub_category,
-    ROUND(SUM(sales), 2) AS total_sales
+sub_category,
+ROUND(SUM(sales), 2) AS total_sales
 FROM superstore_clean
 GROUP BY sub_category
 ORDER BY total_sales DESC;
-
-Answer
+```
+#### Answer
 Top-performing sub-categories contribute a large share of total revenue
 
-Insight
+#### Insight
 Revenue is driven by a few key product segments rather than being evenly distributed.
 
-5. Which product category shows delivery instability?
+#### 5. Which product category shows delivery instability?
+```
 SELECT
-    sub_category,
-    ROUND(STDDEV(DATEDIFF(ship_date, order_date)), 2) AS delivery_variation
+sub_category,
+ROUND(STDDEV(DATEDIFF(ship_date, order_date)), 2) AS delivery_variation
 FROM superstore_clean
 WHERE category = 'Furniture'
 GROUP BY sub_category
 ORDER BY delivery_variation DESC;
+```
 
-Answer
+#### Answer
 The furniture category shows high delivery variation, especially in specific sub-categories
 
-Insight
+#### Insight
 Inconsistent delivery performance suggests operational issues in handling certain products.
 
-6. Who are the top customers by sales?
+#### 6. Who are the top customers by sales?
+```
 SELECT
-    customer_name,
-    ROUND(SUM(sales), 2) AS total_sales
+customer_name,
+ROUND(SUM(sales), 2) AS total_sales
 FROM superstore_clean
 GROUP BY customer_name
 ORDER BY total_sales DESC
 LIMIT 10;
+```
 
-Answer
+#### Answer
 A small number of customers contribute significantly to total revenue
 
-Insight
+#### Insight
 High-value customers can be targeted for retention strategies.
 
+---
 
----This project demonstrates:
+### This project demonstrates:
 
 SQL-based data cleaning and transformation
 analytical thinking and problem-solving
