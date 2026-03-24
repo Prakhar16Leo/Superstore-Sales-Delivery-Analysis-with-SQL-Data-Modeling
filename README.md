@@ -115,12 +115,13 @@ This project focuses on analyzing retail sales and delivery performance using SQ
 
 #### 1. Which customer segment generates the highest sales?
    
- `` SELECT segment,
+ ```
+SELECT segment 
  ROUND(SUM(sales), 2) AS total_sales
  FROM superstore_clean`
  GROUP BY segment. 
- ORDER BY total_sales DESC; ```
-
+ ORDER BY total_sales DESC;
+```
 Answer
 Consumer segment generated the highest revenue (~1.14M)
 
