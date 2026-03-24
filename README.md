@@ -74,24 +74,48 @@ This project focuses on analyzing retail sales and delivery performance using SQ
 
   ---
   
-## Data Modeling (JOIN Project)
+## JOIN and Data Modeling
 
-#### The dataset was transformed into a relational structure:
+The data was structured into relational tables using primary and foreign keys:
 
-#### Tables
+- customers → customer_id
+- orders → order_id, customer_id
+- products → product_id
+- sales → order_id, product_id
 
-1. Customers (customer details)
-2. Orders (order and shipping information)
-3. Products (product hierarchy)
-4. Sales (transaction-level data)
+JOIN operations were performed using:
 
-#### Relationships were created using:
+- INNER JOIN to combine matching records across tables
+- relationships between order_id, customer_id, and product_id
 
-* primary keys
-* foreign keys
-* multi-table joins
+Example:
 
-#### Analysis was revalidated using JOIN queries.
+```sql
+SELECT c.segment, SUM(s.sales)
+FROM customers c
+JOIN orders o ON c.customer_id = o.customer_id
+JOIN sales s ON o.order_id = s.order_id
+GROUP BY c.segment;
+```
+
+---
+
+## Why Analysis Was Performed in Two Ways
+
+The same analysis was performed on:
+
+1. Flat dataset (superstore_clean)
+2. Relational dataset (using JOINs)
+
+Purpose:
+- to validate data consistency
+- to ensure JOIN logic produces correct results
+- to simulate real-world database querying
+
+Result:
+Both approaches produced consistent results, confirming that the relational model was correctly designed.
+
+---
 
 ## Key Findings
 
@@ -223,3 +247,15 @@ SQL-based data cleaning and transformation
 analytical thinking and problem-solving
 ability to derive business insights from data
 understanding of relational database design and joins
+
+### Project Value
+
+#### This project demonstrates:
+
+* Strong SQL fundamentals
+* Understanding of relational database design
+* Ability to solve real-world business problems using data
+* Analytical thinking and structured problem-solving
+
+  <img width="798" height="453" alt="SQL project 2 ss " src="https://github.com/user-attachments/assets/c4bff428-f4f7-4c26-8654-48151fbcbd2c" />
+
