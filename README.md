@@ -257,5 +257,23 @@ understanding of relational database design and joins
 * Ability to solve real-world business problems using data
 * Analytical thinking and structured problem-solving
 
-  <img width="798" height="453" alt="SQL project 2 ss " src="https://github.com/user-attachments/assets/c4bff428-f4f7-4c26-8654-48151fbcbd2c" />
+---
+## Key insights with Image
 
+#### Shiping Analysis showing different modes  
+<img width="687" height="134" alt="image" src="https://github.com/user-attachments/assets/97a27476-eb41-451a-8a0a-2c32741760f7" />
+
+#### Shiping mode showing the highest Delay 
+<img width="381" height="129" alt="image" src="https://github.com/user-attachments/assets/c7967e9c-94e9-45e1-b4ec-07cb0751c218" />
+
+#### Sub-categories analysis 
+<img width="702" height="132" alt="image" src="https://github.com/user-attachments/assets/a8043b93-f383-4033-9db4-1acd73011e96" />
+
+#### Total sale by region 
+<img width="191" height="132" alt="image" src="https://github.com/user-attachments/assets/5550f304-cce0-435f-81d8-9d6820a2a957" />
+
+#### Top Sales by State
+<img width="243" height="182" alt="image" src="https://github.com/user-attachments/assets/125959d3-b224-42b5-a19b-3600d67ca143" />
+
+#### Top sales by Product 
+<img width="431" height="172" alt="image" src="https://github.com/user-attachments/assets/d886dae6-f7d8-40f7-9d74-a66440557d83" />
